@@ -1,13 +1,39 @@
 use std::ops::Neg;
+use std::{fs, io::Read};
 
 fn main() {
-    //let especies: Vec<&str> = Vec::from(["osos", "panteras", "jaguares", "antilopes"]);
-    //
-    let avistamientos: Vec<f64> = [10, 10, 10, 10, 10, 10].iter().map(|&x| x as f64).collect();
+    // Leer archivo completo
+    let mut file = fs::File::open("Texto.txt").unwrap();
+    let mut s = String::new();
+    file.read_to_string(&mut s).unwrap();
 
-    println!("la riqueza de especies es {}", avistamientos.len());
-    let shannon = alphasimpson_1(&avistamientos);
-    println!("la diversidad de shannon es : {:?}", shannon);
+    let mut matrix: Vec<Vec<f64>> = Vec::new();
+
+    for line in s.lines().skip(1) {
+        // omite encabezado
+        let nums: Vec<f64> = line
+            .split(',')
+            .filter_map(|x| x.trim().parse().ok())
+            .collect();
+
+        if !nums.is_empty() {
+            matrix.push(nums);
+        }
+    }
+
+    println!("Matriz cuadrada:");
+    for row in &matrix {
+        println!("Datos: {:?}", row);
+
+        println!("Diversidad shannon: {}", alphashannon(row));
+        println!("Diversidad alphasimpson: {}", alphasimpson(row));
+        println!("Diversidad alphasimpson-1: {}", alphasimpson_1(row));
+        println!(
+            "Diversidad alphasimpson_inverso: {}",
+            alphasimpson_inverso(row)
+        );
+        println!("---------------------------");
+    }
 }
 
 //  (0-[1- {1/S} ]) entre mas cercano a 0 mayor diversidad de especies
