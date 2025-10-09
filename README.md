@@ -19,4 +19,5 @@ $Nt$ es el numero total de avistamientos de la especies en la zona.
 ---
 #Indices Beta
 ##Jaccard
-$$  \textup{J}(A,B) = \frac{ |A \sqcap B|}{|A \sqcup  B|} $$
+
+$$ J(A,B) = \frac{ |A \sqcap B|}{|A \sqcup  B|} $$
