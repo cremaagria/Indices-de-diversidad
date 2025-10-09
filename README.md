@@ -17,7 +17,9 @@ Donde:
 $Ni$ es el numero de avistamientos de la especie a evaluar.
 $Nt$ es el numero total de avistamientos de la especies en la zona.
 ---
+
 #Indices Beta
+
 ##Jaccard
 
 $$ J(A,B) = \frac{ |A \sqcap B|}{|A \sqcup  B|} $$
