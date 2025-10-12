@@ -1,0 +1,7 @@
+Sitio,Especie_1,Especie_2,Especie_3,Especie_4
+Selva_1,12,4,7,9
+Selva_2,8,6,2,3
+Selva_3,5,0,10,1
+Selva_4,9,9,9,9
+Selva_5,1,2,3,4
+Selva_6,3,8,5,7
