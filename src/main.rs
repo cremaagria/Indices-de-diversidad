@@ -4,7 +4,7 @@ mod beta;
 
 fn main() {
     // Leer archivo completo
-    let mut file = fs::File::open("Prueba3.txt").unwrap();
+    let mut file = fs::File::open("Prueba1.txt").unwrap();
     let mut s = String::new();
     file.read_to_string(&mut s).unwrap();
 
@@ -29,17 +29,28 @@ fn main() {
     for row in &matrix {
         println!("Datos: {:?}", row);
 
-        println!("\tDiversidad shannon: {}", alpha::alphashannon(row));
-        println!("\tDiversidad alphasimpson: {}", alpha::alphasimpson(row));
         println!(
-            "\tDiversidad alphasimpson-1: {}",
+            "\tDiversidad shannon:              {:.5}",
+            alpha::alphashannon(row)
+        );
+        println!(
+            "\tDiversidad alphasimpson:         {:.5}",
+            alpha::alphasimpson(row)
+        );
+        println!(
+            "\tDiversidad alphasimpson-1:       {:.5}",
             alpha::alphasimpson_1(row)
         );
         println!(
-            "\tDiversidad alphasimpson_inverso: {}",
+            "\tDiversidad alphasimpson_inverso: {:.5}",
             alpha::alphasimpson_inverso(row)
         );
 
         println!("------------------------------------------------------------------------");
     }
+    println!("\n    ╔═══════════════════════════════════════════════════════╗");
+    println!("    ║             INDICES DE DIVERSIDAD BETA                ║");
+    println!("    ╚═══════════════════════════════════════════════════════╝\n");
+
+    beta::similitud(&matrix);
 }

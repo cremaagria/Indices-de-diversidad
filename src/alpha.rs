@@ -1,5 +1,4 @@
 use std::ops::Neg;
-
 pub fn alphasimpson(avistamientos: &Vec<f64>) -> f64 {
     let sum: f64 = avistamientos.iter().sum();
     avistamientos
@@ -40,7 +39,7 @@ pub fn alphasimpson_inverso(avistamientos: &Vec<f64>) -> f64 {
 // (0-lns)
 pub fn alphashannon(avistamientos: &Vec<f64>) -> f64 {
     println!(
-        "valor maximo posible de shannon deberia ser :{}",
+        "valor maximo posible de shannon:         {:.5}",
         (avistamientos.len() as f64).ln()
     );
     let sum: f64 = avistamientos.iter().sum();
