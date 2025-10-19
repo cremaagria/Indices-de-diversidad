@@ -9,7 +9,7 @@ pub fn similitud(data: &Vec<Vec<f64>>) {
     for row in 0..data.len() {
         let mut fila: Vec<f64> = Vec::new();
         for row1 in 0..data.len() {
-            fila.push(jaccard_cualitativo(&data[row], &data[row1]));
+            fila.push(round_n(jaccard_cualitativo(&data[row], &data[row1]), 5));
         }
         println!("\t{:?}", fila);
     }
@@ -18,7 +18,7 @@ pub fn similitud(data: &Vec<Vec<f64>>) {
     for row in 0..data.len() {
         let mut fila: Vec<f64> = Vec::new();
         for row1 in 0..data.len() {
-            fila.push(round_n(sorensen_cualitativo(&data[row], &data[row1]), 3));
+            fila.push(round_n(sorensen_cualitativo(&data[row], &data[row1]), 5));
         }
         println!("\t{:?}", fila);
     }
@@ -27,7 +27,16 @@ pub fn similitud(data: &Vec<Vec<f64>>) {
     for row in 0..data.len() {
         let mut fila: Vec<f64> = Vec::new();
         for row1 in 0..data.len() {
-            fila.push(round_n(sorensen_cuantitativo(&data[row], &data[row1]), 3));
+            fila.push(round_n(sorensen_cuantitativo(&data[row], &data[row1]), 5));
+        }
+        println!("\t{:?}", fila);
+    }
+
+    println!("morisita_orn");
+    for row in 0..data.len() {
+        let mut fila: Vec<f64> = Vec::new();
+        for row1 in 0..data.len() {
+            fila.push(round_n(morisita_orn(&data[row], &data[row1]), 5));
         }
         println!("\t{:?}", fila);
     }
@@ -100,4 +109,16 @@ pub fn sorensen_cualitativo(i: &[f64], j: &[f64]) -> f64 {
 fn round_n(x: f64, n: u32) -> f64 {
     let factor = 10f64.powi(n as i32);
     (x * factor).round() / factor
+}
+
+#[allow(dead_code)]
+pub fn morisita_orn(i: &[f64], j: &[f64]) -> f64 {
+    let an: f64 = i.iter().sum();
+    let bn: f64 = j.iter().sum();
+    let ani_bni: f64 = i.iter().zip(j).map(|(a, b)| a * b).sum();
+    let ani2: f64 = i.iter().map(|a| a * a).sum();
+    let bni2: f64 = j.iter().map(|b| b * b).sum();
+    let da = ani2 / (an * an);
+    let db = bni2 / (bn * bn);
+    2.0 * ani_bni / ((da + db) * (an * bn))
 }

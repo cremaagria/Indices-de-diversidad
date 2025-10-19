@@ -4,7 +4,7 @@ mod beta;
 
 fn main() {
     // Leer archivo completo
-    let mut file = fs::File::open("Prueba1.txt").unwrap();
+    let mut file = fs::File::open("Prueba4.txt").unwrap();
     let mut s = String::new();
     file.read_to_string(&mut s).unwrap();
 
