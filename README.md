@@ -44,3 +44,19 @@ donde:
 $$
 J(A, B) = \frac{|A \cap B|}{|A \cup B|}
 $$
+
+### morisita orn
+
+$$
+C_{MH} = frac{2 \sum( an_i bn_i)}{(da+db)aN*bN} 
+$$
+
+Donde: 
+$$
+da = frac{\sum (an_i)²}{aN²}
+$$
+$$
+db = frac{\sum (bn_i)²}{bN²}
+$$
+
+
