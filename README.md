@@ -48,15 +48,15 @@ $$
 ### morisita orn
 
 $$
-C_{MH} = frac{2 \sum( an_i bn_i)}{(da+db)aN*bN} 
+C_{MH} = \frac{2\sum( an_i bn_i)}{(da+db)aN bN} 
 $$
 
 Donde: 
 $$
-da = frac{\sum (an_i)²}{aN²}
+da = \frac{\sum (an_i)²}{aN²}
 $$
 $$
-db = frac{\sum (bn_i)²}{bN²}
+db = \frac{\sum (bn_i)²}{bN²}
 $$
 
 
